@@ -4,7 +4,7 @@
     - name: Copy the files to remote machines 
       become: true
       copy:
-        src: ~/test_html01/index.html
+        src: index.html
         dest: /var/www/html
         owner: www-data
         group: www-data
