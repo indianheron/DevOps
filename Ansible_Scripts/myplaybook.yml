@@ -1,10 +1,12 @@
 ---
 - hosts: webservers
+  vars:
+    job_name: "{{ lookup('env', 'JOB_NAME') }}"
   tasks:
     - name: Copy the files to remote machines 
       become: true
       copy:
-        src: index.html
+        src: ~/{{ job_name }}/index.html
         dest: /var/www/html
         owner: www-data
         group: www-data
