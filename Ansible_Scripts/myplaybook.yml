@@ -6,7 +6,7 @@
     - name: Copy the files to remote machines 
       become: true
       copy:
-        src: ~/{{ job_name }}/index.html
+        src: ~/workspace/{{ job_name }}/index.html
         dest: /var/www/html
         owner: www-data
         group: www-data
