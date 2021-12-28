@@ -1,0 +1,19 @@
+Host vm2
+HostName 172.31.1.159
+User ubuntu
+IdentityFile ~/.ssh/vm-keys
+
+Host vm3
+HostName 172.31.7.3
+User ubuntu
+IdentityFile ~/.ssh/vm-keys
+
+Host bw-test
+HostName 172.31.0.65
+User ubuntu
+IdentityFile ~/.ssh/vm-keys
+
+Host mygit
+HostName github.com
+User git
+IdentityFile ~/.ssh/jid_github_key_27Dec2021
