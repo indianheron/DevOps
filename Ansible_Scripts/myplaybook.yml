@@ -11,11 +11,3 @@
         owner: www-data
         group: www-data
         mode: 0644
-    - name: Copy the files to remote machines [check.html]
-      become: true
-      copy:
-        src: ~/workspace/{{ job_name }}/check.html
-        dest: /var/www/html
-        owner: www-data
-        group: www-data
-        mode: 0644
