@@ -6,8 +6,9 @@
     - name: Copy the files to remote machines 
       become: true
       copy:
-        src: ~/workspace/{{ job_name }}/*.html
+        src: ~/workspace/{{ job_name }}/{{ item }}
         dest: /var/www/html
         owner: www-data
         group: www-data
         mode: 0644
+      with_fileglob: "*.html"
