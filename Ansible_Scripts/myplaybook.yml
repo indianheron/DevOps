@@ -11,7 +11,7 @@
         state: absent
     - name : pause for 10 sec [pre_task]
       pause: 
-        seconds: 10
+        seconds: 30
         
   tasks:
     - name: Copy the files to remote machines [index.html]
@@ -26,7 +26,7 @@
   post_tasks:
     - name : pause for 10 sec [post_task]
       pause:
-        seconds: 10
+        seconds: 30
 
     - name: Adding back the health check file 
       become: true
