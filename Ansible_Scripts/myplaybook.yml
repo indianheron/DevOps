@@ -12,7 +12,7 @@
         state: absent
     - name : pause for {{ wait_time }} sec [pre_task]
       pause: 
-        seconds: {{ wait_time }}
+        seconds: "{{ wait_time }}"
         
   tasks:
     - name: Copy the files to remote machines [index.html]
@@ -27,7 +27,7 @@
   post_tasks:
     - name : pause for {{ wait_time }}  sec [post_task]
       pause:
-        seconds: {{ wait_time }}
+        seconds: "{{ wait_time }}"
 
     - name: Adding back the health check file 
       become: true
