@@ -25,9 +25,9 @@
         mode: 0644
  
   post_tasks:
-    - name : pause for {{ wait_time }}  sec [post_task]
+    - name : pause for 3 sec [post_task]
       pause:
-        seconds: "{{ wait_time }}"
+        seconds: 3
 
     - name: Adding back the health check file 
       become: true
