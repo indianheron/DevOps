@@ -3,15 +3,16 @@
   serial: 1
   vars:
     job_name: "{{ lookup('env', 'JOB_NAME') }}"
+    wait_time: 30
   pre_tasks:
     - name: Removing the health check file 
       become: true
       ansible.builtin.file:
         path: /var/www/html/check.html
         state: absent
-    - name : pause for 10 sec [pre_task]
+    - name : pause for {{ wait_time }} sec [pre_task]
       pause: 
-        seconds: 30
+        seconds: {{ wait_time }}
         
   tasks:
     - name: Copy the files to remote machines [index.html]
@@ -24,9 +25,9 @@
         mode: 0644
  
   post_tasks:
-    - name : pause for 10 sec [post_task]
+    - name : pause for {{ wait_time }}  sec [post_task]
       pause:
-        seconds: 30
+        seconds: {{ wait_time }}
 
     - name: Adding back the health check file 
       become: true
