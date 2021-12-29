@@ -1,13 +1,38 @@
 ---
 - hosts: webservers
+  serial: 1
   vars:
     job_name: "{{ lookup('env', 'JOB_NAME') }}"
+  pre_tasks:
+    - name: Removing the health check file 
+      become: true
+      ansible.builtin.file:
+        path: /var/www/html/check.html
+        state: absent
+    - name : pause for 10 sec [pre_task]
+      pause: 
+        seconds: 10
+        
   tasks:
     - name: Copy the files to remote machines [index.html]
       become: true
       copy:
         src: ~/workspace/{{ job_name }}/index.html
         dest: /var/www/html
+        owner: www-data
+        group: www-data
+        mode: 0644
+ 
+  post_tasks:
+    - name : pause for 10 sec [post_task]
+      pause:
+        seconds: 10
+
+    - name: Adding back the health check file 
+      become: true
+      ansible.builtin.file:
+        path: /var/www/html/check.html
+        state: touch
         owner: www-data
         group: www-data
         mode: 0644
